@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {FormGroup,InputLabel,Input,FormControl,Button,makeStyles} from '@material-ui/core';
-import axios from 'axios';
 import {Link} from 'react-router-dom'
 
 
@@ -29,17 +28,29 @@ const [email,setEmail]=useState('');
 const [phone,setPhone]=useState('');
 const [website,setWebsite]=useState('');
 
-const data = JSON.stringify({
-  "name":name,
-  "email":email,
-  "username":username,
-  "phone":parseInt(phone),
-  "website":website
-})
+// const data = JSON.stringify({
+//   "name":name,
+//   "email":email,
+//   "username":username,
+//   "phone":parseInt(phone),
+//   "website":website
+// })
 const editData=()=>{
-   axios.post(`https://jsonplaceholder.typicode.com/users`)
-   console.log("Post Data :");
-   console.log(data);
+  fetch('https://jsonplaceholder.typicode.com/users', {
+  method: 'POST',
+  body: JSON.stringify({
+    name: name,
+    username: username,
+    phone: phone,
+    email:email,
+    website:website
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
 }
 
   const classes=useStyles();

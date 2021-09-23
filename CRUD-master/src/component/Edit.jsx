@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {FormGroup,Select,InputLabel,Input,FormControl,Button,makeStyles} from '@material-ui/core';
-import axios from 'axios';
+import {FormGroup,InputLabel,Input,FormControl,Button,makeStyles} from '@material-ui/core';
 import {Link} from 'react-router-dom'
 
 
@@ -39,12 +38,21 @@ setWebsite(localStorage.getItem('Website'));
 },[])
 
 const editUserData=()=>{
-  console.log(name);
-  console.log(username);
-  console.log(email);
-  console.log(phone);
-  console.log(website);
-   axios.get(`https://jsonplaceholder.typicode.com/users?param1=${email}&param2=${name}&param3=${username}&param4=${phone}&param5=${website}`)
+  fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  method: 'PUT',
+  body: JSON.stringify({
+    name: name,
+    username: username,
+    phone: phone,
+    email:email,
+    website:website
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
 }
   const classes=useStyles();
  return(

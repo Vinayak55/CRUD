@@ -3,7 +3,7 @@ import React from 'react';
 import {NavLink,Link} from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import { getUser } from '../service/api'
-import axios from 'axios';
+
 
 const useStyle=makeStyles({
     table:{
@@ -44,9 +44,12 @@ const Home=()=>{
     }
 
    const deleteUser=(user)=>{
-      axios.delete(`https://jsonplaceholder.typicode.com/users/${user.email}`);
-      console.log("user deleted : "+user.email);
-    //  alert("Are you sure you want to delete record")
+      fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
+                method: 'DELETE',
+                })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+            
     }
 
     return(
