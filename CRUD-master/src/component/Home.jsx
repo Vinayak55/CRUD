@@ -44,7 +44,7 @@ const Home=()=>{
     }
 
    const deleteUser=(user)=>{
-      fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
+      fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
                 method: 'DELETE',
                 })
                 .then((response) => response.json())
@@ -78,7 +78,7 @@ const Home=()=>{
                             <TableCell>{user.phone}</TableCell> 
                             <TableCell>{user.website}</TableCell> 
                             <TableCell>
-                                <Button variant='contained' onClick={()=>loadData(user)} component={Link} to={`/edit/${user.email}`} style={{marginRight:'5px',borderRadius:'10px', width:'31px',height:'25px'}} color='primary'>Edit</Button>
+                                <Button variant='contained' onClick={()=>loadData(user)} component={Link} to={`/${user.id}`} style={{marginRight:'5px',borderRadius:'10px', width:'31px',height:'25px'}} color='primary'>Edit</Button>
                                 <Button variant='contained' onClick={()=>deleteUser(user)}  style={{borderRadius:'10px', width:'31px',height:'25px'}} color='secondary'>Delete</Button>
                             </TableCell> 
                             

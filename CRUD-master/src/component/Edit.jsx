@@ -38,7 +38,7 @@ setWebsite(localStorage.getItem('Website'));
 },[])
 
 const editUserData=()=>{
-  fetch('https://jsonplaceholder.typicode.com/posts/1', {
+  fetch(`https://jsonplaceholder.typicode.com/users/1`, {
   method: 'PUT',
   body: JSON.stringify({
     name: name,
