@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import {FormGroup,InputLabel,Input,FormControl,Button,makeStyles} from '@material-ui/core';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 
 
 export default function Edit() {
+const [id,setId]=useState('');
 const [name,setName]=useState('');
 const [username,setuserName]=useState('');
 const [email,setEmail]=useState('');
@@ -30,6 +31,7 @@ const [website,setWebsite]=useState('');
 
 
 useEffect(() => {
+setId(localStorage.getItem('Id'));
 setName(localStorage.getItem('Name'));
 setuserName(localStorage.getItem('UserName'));
 setEmail(localStorage.getItem('Email'));
